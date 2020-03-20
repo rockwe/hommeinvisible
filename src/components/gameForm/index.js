@@ -55,18 +55,6 @@ const GameForm = props => {
           <StyledInput type='submit'></StyledInput>
         </FormStyled>
       </FormContainer>
-      <div>
-        {props.gameState.game.map(form => {
-          return (
-            <div key={form.id}>
-              <p>
-                Pour le jeu {form.game.game}, need {form.game.players} personnes
-                : {form.game.description}
-              </p>{' '}
-            </div>
-          )
-        })}
-      </div>
     </div>
   )
 }

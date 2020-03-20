@@ -2,12 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 import GameForm from '../components/gameForm'
+import ListFilter from '../components/listGame'
+import ListGroup from '../components/listGroups'
 
 const MyGames = () => {
   return (
     <Container>
       <Wrapper>
         <GameForm></GameForm>
+        <ListGroup></ListGroup>
+        <ListFilter></ListFilter>
       </Wrapper>
     </Container>
   )
