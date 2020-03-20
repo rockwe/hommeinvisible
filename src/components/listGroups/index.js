@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 const Groups = props => {
@@ -10,6 +9,12 @@ const Groups = props => {
     <div>
       <div>
         {props.gameState?.game?.map(form => {
+          console.log('form', form)
+          if (
+            props.filters.game !== 'all' &&
+            props.filters.game !== form.game.game
+          )
+            return
           return (
             <div key={form.id}>
               <p>
@@ -23,15 +28,10 @@ const Groups = props => {
     </div>
   )
 }
-function getVisibleGroups(game, formGame = []) {
-  console.log('LOG', formGame)
-  return formGame.filter(form => {
-    return game === 'all' || game === form.game
-  })
-}
+
 const mapStateToProps = state => ({
-  gameState: getVisibleGroups(state.formGame)
-  //gameState: state.formGame
+  gameState: state.formGame,
+  filters: state.filters
 })
 
 export default connect(mapStateToProps)(Groups)
