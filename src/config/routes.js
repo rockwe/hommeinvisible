@@ -2,7 +2,7 @@ import React from 'react'
 
 import Login from '../screens/login'
 import Games from '../screens/games'
-
+import MyGames from '../screens/myGames'
 import {
   Route,
   BrowserRouter as Router,
@@ -16,6 +16,7 @@ const Routes = () => {
       <Switch>
         <Route exact path='/' component={Login}></Route>
         <Route path='/games' component={Games}></Route>
+        <Route path='/mygames' component={MyGames}></Route>
         <Redirect to='/' />
       </Switch>
     </Router>
