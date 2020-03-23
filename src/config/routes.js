@@ -15,9 +15,12 @@ import AuthLayout from '../components/layout/AuthLayout'
 import { withTranslation } from 'react-i18next'
 
 const Routes = (...props) => {
-  const AppRoute = ({ component: Component, layout: Layout, t }) => {
+  const token = localStorage.getItem('x-access-token')
+
+  const AppRoute = ({ component: Component, layout: Layout, ...rest }) => {
     return (
       <Route
+        {...rest}
         render={props => (
           <Layout>
             <Component {...props} />
@@ -27,16 +30,17 @@ const Routes = (...props) => {
     )
   }
 
-  const AuthRoute = ({ component: Component, layout: Layout }) => {
+  const AuthRoute = ({ component: Component, layout: Layout, ...rest }) => {
     return (
       <Route
+        {...rest}
         render={props =>
-          localStorage.getItem('token') ? (
+          token ? (
             <Layout>
               <Component {...props} />
             </Layout>
           ) : (
-            <Redirect to='/games' />
+            <Redirect to='/signin' />
           )
         }
       />
@@ -45,8 +49,9 @@ const Routes = (...props) => {
   return (
     <Router>
       <Switch>
-        <AppRoute exact path='/' component={Login} layout={AuthLayout} exact />
-        <AuthRoute path='/games' component={Games} layout={AppLayout} exact />
+        <Redirect from='/' to='/games' exact />
+        <AppRoute exact path='/signin' component={Login} layout={AuthLayout} />
+        <AuthRoute path='/games' component={Games} layout={AppLayout} />
         <AuthRoute
           path='/mygames'
           component={MyGames}
