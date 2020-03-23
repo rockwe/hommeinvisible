@@ -1,22 +1,35 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
-
+import { connect } from 'react-redux'
 import styled from 'styled-components'
+import allTheActions from '../../actions/'
+import { bindActionCreators } from 'redux'
+import i18next from 'i18next'
+import { withTranslation } from 'react-i18next'
 
-const LoginForm = ({ submit }) => {
-  const history = useHistory()
+const LoginForm = props => {
+  //const history = useHistory()
+  const [form, setForm] = useState('')
 
-  const [form, setForm] = useState({
+  const onSubmit = e => {
+    e.preventDefault()
+    const { actions } = props
+    actions.auth.loginUserCall(form.username, form.password)
+    setForm('')
+    console.log('Todo -> props', form)
+  }
+
+  /* const [form, setForm] = useState({
     username: '',
     password: '',
     isError: false,
     isErrorMessage: ''
-  })
+  })*/
 
   return (
     <FormContainer>
-      <FormStyled onSubmit={e => submit(e, form, history)}>
+      <FormStyled onSubmit={onSubmit}>
         <StyledInput
           placeholder='Entrer Email'
           name='username'
@@ -101,4 +114,14 @@ LoginForm.propTypes = {
   submit: PropTypes.func
 }
 
-export default LoginForm
+const mapStateToProps = state => ({
+  loginState: state.auth
+})
+const mapDispatchToProps = () => dispatch => ({
+  actions: {
+    auth: bindActionCreators(allTheActions.auth, dispatch)
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+withTranslation(['home', 'common'], { wait: true })(LoginForm)
