@@ -1,6 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
 function mapStateToProps(state) {
   const { game } = state
   return {
@@ -18,25 +21,34 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-function Filters({ selectedGame, onGameChange }) {
+function Filters({ onGameChange }) {
   return (
-    <div>
-      <div>
-        Filters:
-        <div>
-          Game:
-          <select
-            defaultValue={selectedGame}
-            onChange={e => onGameChange(e.target.value)}
-          >
-            <option value='all'>All</option>
-            <option value='League of Legends'>League of Legends</option>
-            <option value='World of Warcraft'>World of Warcraft</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <Wrapper>
+      <button
+        value='League of Legends'
+        onClick={e => onGameChange(e.target.value)}
+      >
+        League of Legends
+      </button>
+      <button
+        value='World of Warcraft'
+        onClick={e => onGameChange(e.target.value)}
+      >
+        World of Warcraft
+      </button>
+      <button value='Warzone' onClick={e => onGameChange(e.target.value)}>
+        Warzone
+      </button>
+    </Wrapper>
   )
 }
+
+Filters.propTypes = {
+  onGameChange: PropTypes.func
+}
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters)
