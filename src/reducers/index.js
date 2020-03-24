@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
+import addGame from './addGame'
 
-/*import counter from './counter'
-import theme from './theme'
-import todos from './todos'*/
-
-export default combineReducers({})
+export default combineReducers({
+  addGame
+})
