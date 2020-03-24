@@ -1,0 +1,13 @@
+{
+  "home": {
+    "title": "Mensaje de bienvenida",
+  },
+  "common": {
+    "currentLanguage": "La langue actuelle est ",
+    "actions": {
+      "toggleToFrench": "French",
+      "toggleToEnglish": "English",
+      "goToPage": "Open accueil"
+    }
+  }
+}
