@@ -1,5 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import allTheActions from '../../actions/'
+import { bindActionCreators } from 'redux'
+
+const Game = props => {
+  console.log('props', props)
+
+  return (
+    <div>
+      <div> hello</div>
+    </div>
+  )
+}
 
 function mapStateToProps(state) {
   const { game } = state

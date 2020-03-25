@@ -1,9 +1,13 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { withTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
 const sideBar = props => {
   const isActiveRoute = route => {
     return window.location.pathname.indexOf(route) !== -1
   }
+  const { t } = props
   return (
     <div>
       <div>
@@ -13,13 +17,13 @@ const sideBar = props => {
         <li>
           <a href='/games' className='nav-link'>
             <i className='fas fa-fire' />
-            <span>games</span>
+            <span>{t('sideBar.1')}</span>
           </a>
         </li>
         <li>
           <a href='/mygames' className='nav-link'>
             <i className='fas fa-lightbulb' />
-            <span>MyGames</span>
+            <span>{t('sideBar.2')}</span>
           </a>
         </li>
       </ul>
@@ -27,4 +31,4 @@ const sideBar = props => {
   )
 }
 
-export default sideBar
+export default withTranslation()(sideBar)
