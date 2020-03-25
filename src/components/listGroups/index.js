@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+//import styled from 'styled-components'
 
 import { connect } from 'react-redux'
+import GroupItem from '../groupItem/'
 
 const Groups = props => {
   console.log('props', props)
@@ -16,17 +19,22 @@ const Groups = props => {
           )
             return
           return (
-            <div key={form.id}>
-              <p>
-                Pour le jeu {form.game.game}, need {form.game.players} personnes
-                : {form.game.description}
-              </p>{' '}
-            </div>
+            <GroupItem
+              key={form.id}
+              game={form.game.game}
+              players={form.game.players}
+              desc={form.game.description}
+            ></GroupItem>
           )
         })}
       </div>
     </div>
   )
+}
+
+Groups.propTypes = {
+  filters: PropTypes.object,
+  gameState: PropTypes.object
 }
 
 const mapStateToProps = state => ({
