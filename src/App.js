@@ -5,8 +5,6 @@ import { store } from './config/store'
 
 import { ThemeProvider } from 'styled-components'
 import { themeDark } from './config/theme'
-import { store } from './config/store'
-import { Provider } from 'react-redux'
 import './App.css'
 
 function App() {
