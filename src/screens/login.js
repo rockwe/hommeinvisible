@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { connect } from 'react-redux'
 import LoginForm from '../components/loginForm'
 
 import login from '../services/login'
