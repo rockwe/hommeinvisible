@@ -24,21 +24,21 @@ function mapDispatchToProps(dispatch) {
 function Filters({ onGameChange }) {
   return (
     <Wrapper>
-      <button
+      <ButtonCustom
         value='League of Legends'
         onClick={e => onGameChange(e.target.value)}
       >
         League of Legends
-      </button>
-      <button
+      </ButtonCustom>
+      <ButtonCustom
         value='World of Warcraft'
         onClick={e => onGameChange(e.target.value)}
       >
         World of Warcraft
-      </button>
-      <button value='Warzone' onClick={e => onGameChange(e.target.value)}>
+      </ButtonCustom>
+      <ButtonCustom value='Warzone' onClick={e => onGameChange(e.target.value)}>
         Warzone
-      </button>
+      </ButtonCustom>
     </Wrapper>
   )
 }
@@ -49,6 +49,14 @@ Filters.propTypes = {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 50%;
+`
+
+const ButtonCustom = styled.button`
+  background-color: ${props => props.theme.formIn};
+  border: solid thin ${props => props.theme.primary};
+  border-radius: 0 10px 0 0;
+  padding: 10px 0;
 `
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters)

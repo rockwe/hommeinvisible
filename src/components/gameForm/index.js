@@ -82,7 +82,7 @@ const FormStyled = styled.form`
   justify-content: center;
   margin: 12px;
   border-radius: 8px;
-  background-color: blue;
+  background-color: ${props => props.theme.formIn};
 `
 
 GameForm.propTypes = {
