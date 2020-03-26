@@ -13,10 +13,6 @@ import allTheActions from '../../actions/'
 const GameForm = props => {
   const [form, setForm] = useState('')
 
-  useEffect(() => {
-    console.log(form)
-  })
-
   const onSubmit = e => {
     e.preventDefault()
     const { actions } = props
@@ -25,9 +21,7 @@ const GameForm = props => {
       id: uuid()
     })
     setForm('')
-    console.log('Todo -> props', form)
   }
-  console.log(props)
 
   return (
     <div>

@@ -5,16 +5,6 @@ import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Game = props => {
-  console.log('props', props)
-
-  return (
-    <div>
-      <div> hello</div>
-    </div>
-  )
-}
-
 function mapStateToProps(state) {
   const { game } = state
   return {
@@ -32,6 +22,7 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
+
 function Filters({ onGameChange }) {
   return (
     <Wrapper>

@@ -5,22 +5,10 @@ import GameForm from '../components/gameForm'
 import ListFilter from '../components/listGame'
 import ListGroup from '../components/listGroups'
 
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import allTheActions from '../actions'
-
-import { themeLight, themeDark } from '../config/theme'
-
 const MyGames = props => {
   return (
     <Container>
       <Wrapper>
-        <button onClick={() => props.actions.theme.changeTheme(themeLight)}>
-          Theme Light
-        </button>
-        <button onClick={() => props.actions.theme.changeTheme(themeDark)}>
-          Theme Dark
-        </button>
         <GameForm></GameForm>
         <Content>
           <ListFilter></ListFilter>
@@ -52,10 +40,4 @@ const Content = styled.div`
   display: flex;
 `
 
-const mapDispatchToProps = () => dispatch => ({
-  actions: {
-    theme: bindActionCreators(allTheActions.theme, dispatch)
-  }
-})
-
-export default connect(null, mapDispatchToProps)(MyGames)
+export default MyGames

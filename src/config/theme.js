@@ -2,7 +2,7 @@ const themeLight = {
   primary: 'white',
   secondary: 'lightgray',
   text: 'black',
-  formIn: 'white',
+  formIn: '#483270',
   formOut: 'lightgray'
 }
 
