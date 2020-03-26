@@ -1,10 +1,13 @@
 import React from 'react'
+
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
+//i18n
 //import { useTranslation } from 'react-i18next'
 import { withTranslation } from 'react-i18next'
 import i18next from '../../i18n'
-import styled from 'styled-components'
 
-import { Link } from 'react-router-dom'
 //Redux
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -17,16 +20,29 @@ import FlagUK from './../../assets/img/uk.svg'
 //Theme
 import { themeLight, themeDark } from '../../config/theme'
 
-const Header = (props, t) => {
+const Header = props => {
   function handleclick(lang) {
     i18next.changeLanguage(lang)
   }
   function handleTheme(theme) {
     props.actions.theme.changeTheme(theme)
   }
-  console.log('PROPS', props)
+  const { t } = props
   return (
     <NavBar>
+      <WrapperUl>
+        <LinkStyle>
+          <Link to='/games'>
+            <span>{t('sideBar.1')}</span>
+          </Link>
+        </LinkStyle>
+        <LinkStyle>
+          <Link to='/mygames'>
+            <span>{t('sideBar.2')}</span>
+          </Link>
+        </LinkStyle>
+      </WrapperUl>
+
       <Wrapper>
         <Button onClick={() => handleTheme(themeLight)}>light</Button>
         <Button onClick={() => handleTheme(themeDark)}>dark</Button>
@@ -53,6 +69,10 @@ const NavBar = styled.nav`
 const Wrapper = styled.div`
   display: flex;
 `
+const WrapperUl = styled.ul`
+  display: flex;
+  margin: 0;
+`
 const Image = styled.img`
   height: 25px;
   width: 25px;
@@ -63,6 +83,13 @@ const Button = styled.button`
   padding: 0 10px;
   border: solid thin ${props => props.theme.primary};
 `
+const LinkStyle = styled.li`
+  background-color: ${props => props.theme.secondary};
+  padding: 0 10px;
+  border: solid thin ${props => props.theme.primary};
+  display: flex;
+  align-items: center;
+`
 
 const mapDispatchToProps = () => dispatch => ({
   actions: {
@@ -70,4 +97,4 @@ const mapDispatchToProps = () => dispatch => ({
   }
 })
 
-export default connect(null, mapDispatchToProps)(Header)
+export default (connect(null, mapDispatchToProps), withTranslation())(Header)
