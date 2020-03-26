@@ -7,49 +7,43 @@ import allTheActions from '../actions'
 /* eslint-disable react/jsx-key */
 
 import data from '../data.json'
-const Jeux = data.Jeux
+const Games = data.Jeux
 
 const Game = props => {
-  //console.log('GAME', props)
   const [game, setGame] = useState('')
 
-  /*console.log(props)
-  console.log(game)
-  console.log(setGame)
-  console.log(Jeux)*/
-
   useEffect(() => {
-    //console.log('OKOK' + game)
+    //console.log('GAMEEE' + game)
   })
 
   const onSubmit = e => {
-    //console.log('HAAHAHHA')
+    //console.log(e)
+    console.log('GAME' + game)
 
     e.preventDefault()
     const { actions } = props
-    console.log('TEST:' + actions.games)
+    //console.log('e:' + JSON.stringify(e))
+
     actions.games.addGame({
       GAMERS: game,
       id: uuid()
     })
     setGame('')
-    //console.log('ok')
   }
 
   return (
     <div>
       <div>
-        {Jeux.map(s => (
-          <div key={s.id}>
-            <p key={s.id}>ID: {s.id}</p>
-            <p key={s.id}>TITLE: {s.title}</p>
-            <p key={s.id}>DESCIRPTION{s.description}</p>
-            <form onSubmit={onSubmit}>
-              <button value={game} onChange={e => setGame(e.target.value)}>
-                AJOUT FAVORIS
-              </button>
-            </form>
-          </div>
+        {Games.map(game => (
+          <form onSubmit={onSubmit} value={game}>
+            <div key={game.id}>
+              <p key={game.id}>ID: {game.id}</p>
+              <p key={game.id}>TITLE: {game.title}</p>
+              <p key={game.id}>DESCIRPTION{game.description}</p>
+
+              <button>AJOUT FAVORIS</button>
+            </div>
+          </form>
         ))}
       </div>
     </div>
