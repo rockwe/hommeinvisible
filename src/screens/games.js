@@ -10,7 +10,7 @@ import data from '../data.json'
 const Jeux = data.Jeux
 
 const Game = props => {
-  console.log('GAME', props)
+  //console.log('GAME', props)
   const [game, setGame] = useState('')
 
   /*console.log(props)
@@ -45,7 +45,9 @@ const Game = props => {
             <p key={s.id}>TITLE: {s.title}</p>
             <p key={s.id}>DESCIRPTION{s.description}</p>
             <form onSubmit={onSubmit}>
-              <button>AJOUT FAVORIS</button>
+              <button value={game} onChange={e => setGame(e.target.value)}>
+                AJOUT FAVORIS
+              </button>
             </form>
           </div>
         ))}

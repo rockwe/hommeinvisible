@@ -5,6 +5,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
+  console.log('STATE' + action.payload)
   switch (action.type) {
     case ADD_GAME:
       return {
