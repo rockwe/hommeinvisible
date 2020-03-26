@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Routes from './config/routes'
+import { Provider } from 'react-redux'
+import { store } from './config/store'
 
 import { ThemeProvider } from 'styled-components'
 import { themeDark } from './config/theme'
