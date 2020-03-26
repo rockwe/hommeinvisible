@@ -10,14 +10,14 @@ import uuid from 'uuid/v4'
 
 import allTheActions from '../../actions/'
 
-const GameForm = props => {
+const GroupForm = props => {
   const [form, setForm] = useState('')
 
   const onSubmit = e => {
     e.preventDefault()
     const { actions } = props
-    actions.formGame.addGame({
-      game: form,
+    actions.formGroup.addGroup({
+      group: form,
       id: uuid()
     })
     setForm('')
@@ -79,18 +79,18 @@ const FormStyled = styled.form`
   background-color: ${props => props.theme.formIn};
 `
 
-GameForm.propTypes = {
+GroupForm.propTypes = {
   submit: PropTypes.func
 }
 
 const mapStateToProps = state => ({
-  gameState: state.formGame
+  gameState: state.formGroup
 })
 
 const mapDispatchToProps = () => dispatch => ({
   actions: {
-    formGame: bindActionCreators(allTheActions.formGame, dispatch)
+    formGroup: bindActionCreators(allTheActions.formGame, dispatch)
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameForm)
+export default connect(mapStateToProps, mapDispatchToProps)(GroupForm)

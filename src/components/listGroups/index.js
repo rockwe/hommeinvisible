@@ -10,19 +10,19 @@ const Groups = props => {
 
   return (
     <Wrapper>
-      {props.gameState?.game?.map(form => {
+      {props.gameState?.group?.map(form => {
         console.log('form', form)
         if (
           props.filters.game !== 'all' &&
-          props.filters.game !== form.game.game
+          props.filters.game !== form.group.game
         )
           return
         return (
           <GroupItem
             key={form.id}
-            game={form.game.game}
-            players={form.game.players}
-            desc={form.game.description}
+            game={form.group.game}
+            players={form.group.players}
+            desc={form.group.description}
           ></GroupItem>
         )
       })}

@@ -1,6 +1,6 @@
-export const ADD_GAME = 'ADD_GAME'
+export const ADD_GROUP = 'ADD_GROUP'
 
-export const addGame = payload => ({
-  type: ADD_GAME,
+export const addGroup = payload => ({
+  type: ADD_GROUP,
   payload
 })
