@@ -4,6 +4,8 @@
   },
   "sideBar": {
       "1": "Jeux",
-      "2":"Mes jeux"
+      "2":"Mes jeux",
+      "3":"Clair",
+      "4":"Sombre"
   }
 }

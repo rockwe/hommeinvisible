@@ -42,10 +42,10 @@ const Header = props => {
 
       <Wrapper>
         <Button onClick={() => props.actions.theme.changeTheme(themeLight)}>
-          light
+          <span>{t('sideBar.3')}</span>
         </Button>
         <Button onClick={() => props.actions.theme.changeTheme(themeDark)}>
-          dark
+          <span>{t('sideBar.4')}</span>
         </Button>
       </Wrapper>
 
@@ -64,7 +64,7 @@ const NavBar = styled.nav`
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.tertiary};
   color: ${props => props.theme.text};
 `
 const Wrapper = styled.div`
@@ -82,12 +82,12 @@ const Image = styled.img`
 const Button = styled.button`
   background-color: ${props => props.theme.secondary};
   padding: 0 10px;
-  border: solid thin ${props => props.theme.primary};
+  border: solid thin ${props => props.theme.tertiary};
 `
 const LinkStyle = styled.li`
   background-color: ${props => props.theme.secondary};
   padding: 0 10px;
-  border: solid thin ${props => props.theme.primary};
+  border: solid thin ${props => props.theme.tertiary};
   display: flex;
   align-items: center;
 `

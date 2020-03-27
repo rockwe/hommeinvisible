@@ -13,8 +13,9 @@ const Groups = props => {
       {props.gameState?.group?.map(form => {
         console.log('form', form)
         if (
-          props.filters.game !== 'all' &&
-          props.filters.game !== form.group.game
+          (props.filters.game !== 'all' &&
+            props.filters.game !== form.group.game) ||
+          form.group.players == '0'
         )
           return
         return (
