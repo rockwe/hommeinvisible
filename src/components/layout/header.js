@@ -24,9 +24,6 @@ const Header = props => {
   function handleclick(lang) {
     i18next.changeLanguage(lang)
   }
-  function handleTheme(theme) {
-    props.actions.theme.changeTheme(theme)
-  }
   const { t } = props
   return (
     <NavBar>
@@ -44,8 +41,12 @@ const Header = props => {
       </WrapperUl>
 
       <Wrapper>
-        <Button onClick={() => handleTheme(themeLight)}>light</Button>
-        <Button onClick={() => handleTheme(themeDark)}>dark</Button>
+        <Button onClick={() => props.actions.theme.changeTheme(themeLight)}>
+          light
+        </Button>
+        <Button onClick={() => props.actions.theme.changeTheme(themeDark)}>
+          dark
+        </Button>
       </Wrapper>
 
       <Wrapper>
@@ -97,4 +98,4 @@ const mapDispatchToProps = () => dispatch => ({
   }
 })
 
-export default (connect(null, mapDispatchToProps), withTranslation())(Header)
+export default connect(null, mapDispatchToProps)(withTranslation()(Header))
