@@ -21,6 +21,7 @@ export const loginUserCall = (username, password) => dispatch => {
       console.log(obj)
       localStorage.setItem('x-access-token', obj)
       history.push('/games')
+      window.location.reload()
     })
     .catch(err => console.error(err))
 }
