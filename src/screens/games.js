@@ -6,6 +6,9 @@ import allTheActions from '../actions'
 
 import styled from 'styled-components'
 import GroupItem from '../components/groupItem/'
+import GameItem from '../components/gameItem/'
+
+import { withTranslation } from 'react-i18next'
 
 import { Notifications } from 'react-push-notification'
 import addNotification from 'react-push-notification'
@@ -43,29 +46,31 @@ const Game = props => {
       native: true // when using native, your OS will handle theming.
     })
   }
-
+  const { t } = props
   return (
-    <div>
+    <Container>
       <Wrapper>
-        <Title>Games</Title>
+        <Title>
+          <span>{t('game.1')}</span>
+        </Title>
         <Notifications />
         {Games.map(game => (
           <form
             onSubmit={e => onSubmit(e, game)}
             value={game} /*onSubmit={onSubmit} value={game}*/
           >
-            <div key={game.id}>
-              <p key={game.id}>ID: {game.id}</p>
-              <p key={game.id}>TITLE: {game.title}</p>
-              <p key={game.id}>DESCIRPTION{game.description}</p>
-
-              <button>AJOUT FAVORIS</button>
-            </div>
+            <GameItem
+              id={game.id}
+              title={game.title}
+              description={game.description}
+            ></GameItem>
           </form>
         ))}
       </Wrapper>
       <Wrapper>
-        <Title>Groups</Title>
+        <Title>
+          <span>{t('game.2')}</span>
+        </Title>
         {props.groupState?.group?.map(form => {
           console.log('form', form)
           if (form.group.players == '0') return
@@ -79,7 +84,7 @@ const Game = props => {
           )
         })}
       </Wrapper>
-    </div>
+    </Container>
   )
 }
 
@@ -88,6 +93,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-item: center;
+  background-color: ${props => props.theme.primary};
+`
+const Container = styled.div`
+  min-height: 100vh;
+  color: ${props => props.theme.text};
+  background-color: ${props => props.theme.primary};
 `
 
 const Title = styled.h1``
@@ -103,4 +114,7 @@ const mapDispatchToProps = () => dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTranslation()(Game))

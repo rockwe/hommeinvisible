@@ -7,5 +7,9 @@
       "2":"Mes jeux",
       "3":"Clair",
       "4":"Sombre"
-  }
+  },
+  "game": {
+    "1":"Jeux",
+    "2":"Groupes"
+}
 }
