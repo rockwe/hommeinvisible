@@ -90,21 +90,10 @@ const FormContainer = styled.div`
 
 const FormStyled = styled.form`
   padding: 12px;
-  background-color: #f0141eaa;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  background-color: ${props => props.theme.formIn};
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin: 12px;
   border-radius: 8px;
