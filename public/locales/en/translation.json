@@ -1,0 +1,15 @@
+{
+  "Thanks": {
+      "1": "hello"
+  },
+  "sideBar": {
+      "1": "Games",
+      "2":"My games",
+      "3":"Light",
+      "4":"Dark"
+  },
+  "game": {
+    "1":"Games",
+    "2":"Groups"
+}
+}
